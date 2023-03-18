@@ -716,7 +716,7 @@ abstract class BleManagerHandler extends RequestHandler {
 		if (gatt != null) {
 			final boolean wasConnected = connected;
 			connectionState = BluetoothGatt.STATE_DISCONNECTING;
-			log(Log.VERBOSE, () -> wasConnected ? "Disconnecting..." : "Cancelling connection...");
+			log(Log.VERBOSE, () -> wasConnected ? "qq Disconnecting..." : "qq Cancelling connection...");
 			final BluetoothDevice device = gatt.getDevice();
 			if (wasConnected) {
 				postCallback(c -> c.onDeviceDisconnecting(device));
@@ -724,6 +724,7 @@ abstract class BleManagerHandler extends RequestHandler {
 			}
 			log(Log.DEBUG, () -> "gatt.disconnect()");
 			gatt.disconnect();
+			gatt.close();
 			if (wasConnected)
 				return true;
 
