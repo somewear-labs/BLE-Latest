@@ -26,17 +26,13 @@ allprojects {
     }
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                version = '2.6.0'
-            }
-        }
+publications {
+    // Creates a Maven publication called "release".
+    release(MavenPublication) {
+        version = '2.6.0'
     }
 }
-
+        
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
