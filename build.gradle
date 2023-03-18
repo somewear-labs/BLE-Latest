@@ -1,3 +1,5 @@
+apply plugin: 'maven-publish'
+
 buildscript {
     // https://kotlinlang.org/docs/releases.html#release-details
     ext.kotlin_version = '1.7.20'
@@ -26,10 +28,17 @@ allprojects {
     }
 }
 
-publications {
-    // Creates a Maven publication called "release".
-    release(MavenPublication) {
-        version = '2.6.0'
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                // Applies the component for the release build variant.
+                from components.release
+                version = '1.0.0'
+            }
+        }
     }
 }
         
